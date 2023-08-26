@@ -69,271 +69,270 @@
 				<section>
 					<h2>Why is an Accessible Navigation Important?</h2>
 					<ul>
+						<li>Inclusive User Experience</li>
+						<li>Legal and Policy Requirements</li>
+						<li>Ethical Responsibility</li>
 						<li>It defines the structure of a website</li>
 						<li>It avoids abandonment</li>
-						<li>If it's not accessible it's broken</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2 class="r-fit-text">If it's not accessible <br />it's broken!</h2>
+				</section>
+				
+				<section>
+					<h2>Menu Structure</h2>
+					
+						<h3>Semantic Markup</h3>
+						<p>Using HTML elements for their given meaning, not just for their appearance.</p>
+						<h3>Adaptive</h3>
+						<p>Viewport, magnification, assistive technology</p>
+					
+					<aside class="notes">
+						<h3>Semantic markup</h3>
+						<p>Semantic markup is a way of writing and structuring your HTML (Hypertext Markup Language) so that it reinforces the semantics, or meaning, of the content rather than its appearance.</p>
+						<p>Semantically coded menus adapt to small screens, magnification, and assistive techonology.</p>
+					</aside>
+				</section>
+				<section>
+					<h3>HTML Unordered</h3>
+					<p>When menu items are not in specific order.</p>
+					<pre>
+						<code data-trim>
+							<ul>
+								<li><a href="…">Home</a></li>
+								<li><a href="…">About</a></li>
+								<li><a href="…">Shop</a></li>
+								<li><a href="…">Contact</a></li>
+								…
+							</ul>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>HTML Ordered</h3>
+					<p>When menu items are in sequence.</p>
+					<pre>
+						<code data-trim>
+							<ol>
+								<li><a href="…">Download the Accessibility Checker plugin</a></li>
+								<li><a href="…">Upload the plugin to your website</a></li>
+								<li><a href="…">Activate the plugin</a></li>
+								<li><a href="…">Scan a post</a></li>
+								<li><a href="…">Fix accessibility issues</a></li>
+								…
+							</ol>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Identify Menu</h3>
+					<p>Use HTML5 nav element</p>
+					<pre>
+						<code data-trim data-trim>
+							<nav>
+								<ul>
+									…
+								</ul>
+							</nav>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Label Menu</h3>
+					<ul>
+						<li>Option 1: aria-label attribute</li>
+						<li>Option 2: aria-labelledby attribute</li>
+					</ul>
+					<pre>
+						<code data-trim data-trim data-line-numbers="1-4|6-10">
+							<!-- Option 1: aria-label -->
+							<nav aria-label="Main">
+								…
+							</nav>
+							
+							<!-- Option 2: aria-labelledby -->
+							<nav aria-labelledby="mainmenulabel">
+							<h2 id="mainmenulabel">Main Menu</h2>
+								…
+							</nav>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Indicate Current Menu Item</h3>
+					<p>Use aria-current attribute</p>
+					<pre>
+						<code data-trim data-trim data-line-numbers>
+							<li>
+								<a href="..." aria-current="page">
+								Contact Us
+								</a>
+							</li>
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Rendered Example</h3>
+					<nav aria-label="Main">
+						<ul>
+							<li><a href="#" aria-current="page">Home</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Shop</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+					</nav>
+				</section>
+
+				<section>
+					<h2>Menu Styling</h2>
+					<ul>
+						<li>Displayed in convential a location, such as the page header or left sidebar.</li>
+						<li>Easily identifed as a menu through propery markup and styles</li>
+						<li>Menu adapts to varying text and viewport sizes</li>
+						<li>Avoid line breaks, uppercase text, and hyphens</li>
+						<li>Adequate white space</li>
+						<li>Generous sizes for clickable areas</li>
 					</ul>
 				</section>
 				<section>
-					<section>
-						<h2>Menu Structure</h2>
+					<h3>Hover and Focus States</h3>
+					<p>Changing hovered and focus states give uses visual guideance when navigating the menu.</p>
+					<pre>
+						<code data-trim data-trim>
+							nav a:hover,
+							nav a:focus {
+								color: #0d5f9d; /* blue */
+								background-color: #fff; /* white */
+								text-decoration: underline;
+							}
+							nav a:focus {
+								outline: solid 2px #0d5f9d; /* blue */
+								outline-offset: 2px;
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Active State</h3>
+					<p>Changing activated state helps users identify which menu item they've clicked.</p>
+					<pre>
+						<code data-trim data-trim>
+							nav a:active {
+								color: #072446; /* dark blue */
+								background-color: #F3CD1D; /* yellow */
+								text-decoration: underline;
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Current state</h3>
+					<p>Visually indicating the active menu item helps users identify the current page.</p>
+					<pre>
+						<code data-trim data-trim>
+							nav [aria-current=page] {
+								background-color: #F3CD1D; /* yellow */
+								color: #072446; /* dark blue */
+								border-bottom: .25em solid #072446; /* dark blue */
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h3>Rendered Example</h3>
+					<nav class="menu-style" aria-label="Main">
 						<ul>
-							<li>Semantic Markup</li>
-							<ul>
-								<li>HTML reinforces meaning or the content rather than its appearance.</li>
-							</ul>
-							<li>Adaptive</li>
-							<ul>
-								<li>Viewport, magnification, assistive technology</li>
-							</ul>
+							<li><a href="#" aria-current="page">Home</a></li>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Shop</a></li>
+							<li><a href="#">Contact</a></li>
 						</ul>
-						<aside class="notes">
-							<h3>Semantic markup</h3>
-							<p>Semantic markup is a way of writing and structuring your HTML (Hypertext Markup Language) so that it reinforces the semantics, or meaning, of the content rather than its appearance.</p>
-							<p>Semantically coded menus adapt to small screens, magnification, and assistive techonology.</p>
-						</aside>
-					</section>
-					<section>
-						<h3>HTML Unordered</h3>
-						<p>When menu items are not in specific order.</p>
-						<pre>
-							<code data-trim>
+					</nav>
+				</section>
+
+				<section>
+					<h2>Fly-out Menus</h2>
+					<ul>
+						<li>Defines websites hierarchy</li>
+						<li>Reduces multiple page loads</li>
+						<li>It's helpful to repeat submenus on the parent page</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Fly-out Menu HTML Markup</h3>
+					<p>Fly-out menus are a nested list within the parent list item</p>
+					<pre>
+						<code data-trim data-line-numbers="5-11">
+							<nav aria-label="Main">
 								<ul>
 									<li><a href="…">Home</a></li>
 									<li><a href="…">About</a></li>
-									<li><a href="…">Shop</a></li>
+									<li>
+										<a href="…">Shop</a>
+										<ul>
+											<li><a href="…">Cart</a></li>
+											<li><a href="…">My Account</a></li>
+										</ul>
+									</li>
 									<li><a href="…">Contact</a></li>
-									…
 								</ul>
-							</code>
-						</pre>
-					</section>
-					<section>
-						<h3>HTML Ordered</h3>
-						<p>When menu items are in sequence.</p>
-						<pre>
-							<code data-trim>
-								<ol>
-									<li><a href="…">Download the Accessibility Checker plugin</a></li>
-									<li><a href="…">Upload the plugin to your website</a></li>
-									<li><a href="…">Activate the plugin</a></li>
-									<li><a href="…">Scan a post</a></li>
-									<li><a href="…">Fix accessibility issues</a></li>
-									…
-								</ol>
-							</code>
-						</pre>
-					</section>
-					<section>
-						<h3>Identify Menu</h3>
-						<p>Use HTML5 nav element</p>
-						<pre>
-							<code data-trim data-trim>
-								<nav>
-									<ul>
-										…
-									</ul>
-								</nav>
-							</code>
-						</pre>
-					</section>
-					<section>
-						<h3>Label Menu</h3>
-						<ul>
-							<li>Option 1: aria-label attribute</li>
-							<li>Option 2: aria-labelledby attribute</li>
-						</ul>
-						<pre>
-							<code data-trim data-trim data-line-numbers="1-4|6-10">
-								<!-- Option 1: aria-label -->
-								<nav aria-label="Main">
-									…
-								</nav>
-								
-								<!-- Option 2: aria-labelledby -->
-								<nav aria-labelledby="mainmenulabel">
-								<h2 id="mainmenulabel">Main Menu</h2>
-									…
-								</nav>
-							</code>
-						</pre>
-					</section>
-					<section>
-						<h3>Indicate Current Menu Item</h3>
-						<p>Use aria-current attribute</p>
-						<pre>
-							<code data-trim data-trim data-line-numbers>
-								<li>
-									<a href="..." aria-current="page">
-									Contact Us
-									</a>
-								</li>
-							</code>
-						</pre>
-					</section>
-					<section>
-						<h3>Rendered Example</h3>
-						<nav aria-label="Main">
-							<ul>
-								<li><a href="#" aria-current="page">Home</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Shop</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</nav>
-					</section>
+							</nav>
+						</code>
+					</pre>
 				</section>
-
 				<section>
-					<section>
-						<h2>Menu Styling</h2>
-						<ul>
-							<li>Displayed where the user would expect it</li>
-							<li>Easily identifed as a menu through propery markup and styles</li>
-							<li>Menu adapts to varying text and viewport sizes</li>
-							<li>Avoid line breaks, uppercase text, line breaks, and hyphens</li>
-							<li>Adequate white space</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Hover and Focus States</h3>
-						<p>Changing hovered and focus states give uses visual guideance when navigating the menu.</p>
-						<pre>
-							<code data-trim data-trim>
-								nav a:hover,
-								nav a:focus {
-									color: #0d5f9d; /* blue */
-									background-color: #fff; /* white */
-									text-decoration: underline;
-								}
-								nav a:focus {
-									outline: solid 2px #0d5f9d; /* blue */
-									outline-offset: 2px;
-								}
-							</code>
-						</pre>
-					</section>
-					<section>
-						<h3>Active State</h3>
-						<p>Changing activated state helps users identify which menu item they've clicked.</p>
-						<pre>
-							<code data-trim data-trim>
-								nav a:active {
-									color: #072446; /* dark blue */
-									background-color: #F3CD1D; /* yellow */
-									text-decoration: underline;
-								}
-							</code>
-						</pre>
-					</section>
-					<section>
-						<h3>Current state</h3>
-						<p>Visually indicating the active menu item helps users identify the current page.</p>
-						<pre>
-							<code data-trim data-trim>
-								nav [aria-current=page] {
-									background-color: #F3CD1D; /* yellow */
-									color: #072446; /* dark blue */
-									border-bottom: .25em solid #072446; /* dark blue */
-								}
-							</code>
-						</pre>
-					</section>
-					<section>
-						<h3>Rendered Example</h3>
-						<nav class="menu-style" aria-label="Main">
-							<ul>
-								<li><a href="#" aria-current="page">Home</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Shop</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</nav>
-					</section>
+					<h3>Fly-out Functionality: Mouse Users</h3>
+					<ul>
+						<li>When parent menu item is hovered show submenu</li>
+						<li>Additional javascript can be used to add a close delay for imprecise mouse movement</li>
+					</ul>
+					<pre>
+						<code data-trim>
+							nav > ul li ul {
+								display: none;
+							}
+							nav > ul li:hover ul {
+								display: block;
+							}
+						</code>
+					</pre>
 				</section>
-
 				<section>
-					<section>
-						<h2>Fly-out Menus</h2>
-						<ul>
-							<li>Defines websites hierarchy</li>
-							<li>Reduces multiple page loads</li>
-							<li>It's helpful to repeat submenus on the parent page</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Fly-out Menu HTML Markup</h3>
-						<p>Fly-out menus are a nested list within the parent list item</p>
-						<pre>
-							<code data-trim data-line-numbers="5-11">
-								<nav aria-label="Main">
-									<ul>
-										<li><a href="…">Home</a></li>
-										<li><a href="…">About</a></li>
-										<li>
-											<a href="…">Shop</a>
-											<ul>
-												<li><a href="…">Cart</a></li>
-												<li><a href="…">My Account</a></li>
-											</ul>
-										</li>
-										<li><a href="…">Contact</a></li>
-									</ul>
-								</nav>
-							</code>
-						</pre>
-					</section>
-					<section>
-						<h3>Fly-out Functionality: Mouse Users</h3>
-						<ul>
-							<li>When parent menu item is hovered show submenu</li>
-							<li>Additional javascript can be used to add a close delay for imprecise mouse movement</li>
-						</ul>
-						<pre>
-							<code data-trim>
-								nav > ul li ul {
-									display: none;
-								}
-								nav > ul li:hover ul {
-									display: block;
-								}
-							</code>
-						</pre>
-					</section>
-					<section>
-						<h3>Fly-out Functionality: Keyboard Users</h3>
-						<ul>
-							<li>Define submenu with aria-haspopup on parent item</li>
-							<li>Button toggle with aria-expanded</li>
-							<li>Hidden screen reader text labeld with the parent menu name and 'submenu' appended</li>
-						</ul>
-						<pre>
-							<code data-trim data-line-numbers="2-2|4-6|5-5">
-								...
-								<li aria-haspopup="true">
-									<a href="…">Shop</a>
-									<button aria-expanded="false">
-										<span class="screen-readers">Shop: submenu</span>
-									</button>
-									<ul>
-										<li><a href="…">Cart</a></li>
-										<li><a href="…">My Account</a></li>
-									</ul>
-								</li>
-								...
-							</code>
-						</pre>
-					</section>
-					<section>
-						<h3>Fly-out Functionality: javascript</h3>
-						<ul>
-							<li>Keyboard users can navigate through parent menu items without having to navigate through all submenu items</li>
-							<li>On submenu button click or keypress toggle submenu visibility and toggles aria-expanded attribute</li>
-							<li>When on submenu pressing the escape key closes submenu and set the aria-expanded attribute to false and returns focus back to the submenu button</li>
-							<li>Only allow one submenu open at a time</li>
-						</ul>
-					</section>
+					<h3>Fly-out Functionality: Keyboard Users</h3>
+					<ul>
+						<li>Button toggle with aria-haspopup equal to menu</li>
+						<li>Button toggle with aria-expanded</li>
+						<li>Hidden screen reader text labeled with the parent menu name and 'submenu' appended</li>
+					</ul>
+					<pre>
+						<code data-trim data-line-numbers="4-6|5-5">
+							...
+							<li>
+								<a href="…">Shop</a>
+								<button aria-expanded="false" aria-haspopup="true">
+									<span class="screen-readers">Shop: submenu</span>
+								</button>
+								<ul>
+									<li><a href="…">Cart</a></li>
+									<li><a href="…">My Account</a></li>
+								</ul>
+							</li>
+							...
+						</code>
+					</pre>
 				</section>
+				<section>
+					<h3>Fly-out Functionality: javascript</h3>
+					<ul>
+						<li>Keyboard users can navigate through parent menu items without having to navigate through all submenu items</li>
+						<li>On submenu button click or keypress, toggle submenu visibility and toggle the aria-expanded attribute</li>
+						<li>When on submenu pressing the escape key closes submenu and set the aria-expanded attribute to false and returns focus back to the submenu button</li>
+						<li>Only allow one submenu open at a time</li>
+					</ul>
+				</section>
+				
 				<section>
 					<section>
 						<h2>Mobile Menu</h2>
@@ -344,8 +343,8 @@
 						</ul>
 						<pre>
 							<code data-trim data-line-numbers="1-2">
-								<button aria-expanded="false" aria-controls="mainMenu">Menus</button>
-								<nav id="mainMenu" aria-label="Main">
+								<button aria-expanded="false" aria-controls="site-header-menu">Menus</button>
+								<nav id="site-header-menu" aria-label="Main">
 									<ul>
 										<li><a href="…">Home</a></li>
 										<li><a href="…">About</a></li>
@@ -364,12 +363,17 @@
 					<h2 style="margin-bottom: 0px;">Steve Jones</h2>
 					<p style="margin-top: 0px;"><small>Owner & CTO</small> <br />
 					<a href="https://twitter.com/stevejonesdev" aria-label="Steve Jones Twitter Profile">@stevejonesdev</a></p>
-					<p>WordPress Accessibility Meetup <br />
-					<a href="Equalizedigital.com/events" aria-label="WordPress Accessibility Meetup">Equalizedigital.com/events</a></p>
-					<p>WordPress Accessibility Facebook Group<br />
+					<p>Meetup: 
+					<a href="https://equalizedigital.com/events" aria-label="WordPress Accessibility Meetup">Equalizedigital.com/events</a></p>
+					<p>Facebook Group: 
 					<a href="https://www.facebook.com/groups/wordpress.accessibility" aria-label="WordPress Accessibility Facebook Group">facebook.com/groups/wordpress.accessibility</a></p>
+					<p>Podcast: 
+					<a href="https://accessibilitycraft.com" aria-label="WordPress Accessibility Facebook Group">AccessibilityCraft.com</a></p>
 					<img style="margin-bottom:0px;" data-src="https://equalizedigital.com/wp-content/uploads/2022/11/Equalize-Digital-color-logo.svg" width="400" alt="Equalize Digital">
 					<p style="margin-top:0px;"><small><a href="https://equalizedigital.com">EqualizeDigital.com</a> | <a href="https://twitter.com/EqualizeDigital">@EqualizeDigital</a></small></p>
+
+					
+
 					<aside class="notes">
 						
 					</aside>
